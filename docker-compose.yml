@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  redis:
+    container_name: redis
+    image: redis/redis-stack:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${SERVER_PORT}:6379
+      - ${INSIGHT_PORT}:8001
+    volumes:
+      - ./volume:/data
